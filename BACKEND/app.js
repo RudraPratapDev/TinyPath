@@ -3,6 +3,8 @@ import { nanoid } from "nanoid";
 import dotenv from "dotenv";
 import connectDB from "./src/config/mongo.db.js";
 import urlSchema from "./src/models/shortUrl.model.schema.js";
+import short_url from "./src/routes/short_url.route.js";
+import { redirectFromShortUrl } from "./src/controllers/short_url.controller.js";
 dotenv.config("./.env")
 
 
@@ -16,28 +18,9 @@ app.use(express.urlencoded({extended:true}));
 
 
 
-app.post("/api/create",async (req,res)=>{
-    const {url}=req.body;
-    const shortUrlGen=nanoid(7);
-    const newUrl=new urlSchema({
-        full_url:url,
-        short_url:shortUrlGen
-    })
-    await newUrl.save();
-    res.send("Saved successfully")
-    
-    
-})
+app.use("/api/create",short_url)
 
-app.get("/:shortUrl",async(req,res)=>{
-    const{shortUrl}=req.params;
-    const url=await urlSchema.findOne({short_url:shortUrl})
-    if(url){
-        res.redirect(url.full_url);
-    }else{
-        res.status(404).send("Not found");
-    }
-})
+app.use("/:shortUrl",redirectFromShortUrl)
 
 app.listen(3000,()=>{
     connectDB();
