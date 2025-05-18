@@ -5,6 +5,7 @@ import connectDB from "./src/config/mongo.db.js";
 import urlSchema from "./src/models/shortUrl.model.schema.js";
 import short_url from "./src/routes/short_url.route.js";
 import { redirectFromShortUrl } from "./src/controllers/short_url.controller.js";
+import { errorHandler } from "./src/utils/errorHandler.js";
 dotenv.config("./.env")
 
 
@@ -21,6 +22,8 @@ app.use(express.urlencoded({extended:true}));
 app.use("/api/create",short_url)
 
 app.use("/:shortUrl",redirectFromShortUrl)
+
+app.use(errorHandler)
 
 app.listen(3000,()=>{
     connectDB();
