@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "./src/config/mongo.db.js";
 import urlSchema from "./src/models/shortUrl.model.schema.js";
 import short_url from "./src/routes/short_url.route.js";
+import auth_routes from "./src/routes/auth.route.js"
 import { redirectFromShortUrl } from "./src/controllers/short_url.controller.js";
 import { errorHandler } from "./src/utils/errorHandler.js";
 import cors from "cors";
@@ -20,7 +21,7 @@ app.use(cors())
 
 
 
-
+app.use("/api/auth",auth_routes)
 app.use("/api/create",short_url)
 
 app.use("/:shortUrl",redirectFromShortUrl)
