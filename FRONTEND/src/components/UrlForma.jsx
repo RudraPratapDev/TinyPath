@@ -1,20 +1,28 @@
 
 import React, { useState } from 'react';
 import { ClipboardCopy, Loader2, Check } from 'lucide-react';
-import  {axiosInstance}  from '../utils/axiosInstance.js';
 
-function UrlForma({darkMode}) {
+import { createShortUrl } from '../api/shortUrl.api.js';
+import { useTheme } from '../context/themeContext.js';
+import { useSelector} from 'react-redux'
+
+function UrlForma() {
     const [originalUrl,setOriginalUrl]=useState("");
     const [shortenUrl,setShortenUrl]=useState("");
-    const [isCopied,setIsCopied]=useState(false)
+    const [isCopied,setIsCopied]=useState(false);
+    const { darkMode } = useTheme();
+    
+    const [customSlug,setCustomSlug]=useState("")
+    const {isAuthenticated}=useSelector((state)=>state.auth)
 
 
 
     const HandleSubmit=async function () {
-        const tempUrl=await axiosInstance.post('/api/create',{url:originalUrl})
-        setShortenUrl(tempUrl.data.shortUrl)
+        const tempUrl=await createShortUrl(originalUrl);
+
+        setShortenUrl(tempUrl)
     }
-    console.log(shortenUrl);
+   
 
     const copyToClipboard=function(){
         navigator.clipboard.writeText(shortenUrl);
@@ -54,6 +62,29 @@ function UrlForma({darkMode}) {
         </button>
         </div>
          </div>
+
+        {isAuthenticated &&(
+          <div>
+                <label htmlFor="customSlug" className="block text-sm font-medium mb-2">
+                    Custom URL (optional)
+                </label>
+                <div className="flex items-center">
+                    
+                    <input
+                        type="text"
+                        id="customSlug"
+                        value={customSlug}
+                        onChange={(e) => setCustomSlug(e.target.value)}
+                        placeholder="Enter custom slug"
+                        className={`flex-1 px-4 py-3 rounded-r-md border ${darkMode ? 'bg-gray-700 border-gray-600 focus:border-blue-500' : 'bg-gray-50 border-gray-300 focus:border-blue-500'} focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150`}
+                    />
+                </div>
+                <p className={`text-xs mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                    Leave empty for auto-generated short URL
+                </p>
+            </div>
+        )}
+
         {shortenUrl && (
         <div className={`mt-6 p-4 rounded-md ${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
           <div className="flex items-center justify-between">

@@ -1,13 +1,10 @@
-import React from "react";
-import UrlForma from "../components/UrlForma.jsx";
+import React from 'react'
+import { useTheme } from '../context/themeContext';
+import UrlForma from '../components/UrlForma';
 
+function Dashboard() {
 
-
-import { useTheme } from "../context/themeContext.js";
-
-function Homepage() {
   const { darkMode} = useTheme();
-
   return (
     <>
       <div
@@ -23,7 +20,7 @@ function Homepage() {
 
       </div>
     </>
-  );
+  )
 }
 
-export default Homepage;
+export default Dashboard

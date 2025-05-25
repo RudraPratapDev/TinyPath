@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTheme } from '../context/themeContext';
 
-function Footer({ darkMode }) {
+function Footer() {
   const currentYear = new Date().getFullYear();
+  const { darkMode} = useTheme();
   
   return (
     <footer className={`w-full py-6 text-center ${darkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
