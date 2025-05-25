@@ -1,4 +1,6 @@
+import shortUrl from "../models/shortUrl.model.schema.js";
 import User from "../models/user.model.js"
+
 
 
 export const findUserByEmail=async(email)=>{
@@ -21,21 +23,9 @@ export const createUser=async(name,email,password)=>{
     return newUser;
 }
 
-// export const updateUser=async(id,name,email,password)=>{
-//     const user=await User.findById(id);
-//     if(!user)throw new Error("User not Found");
-//     user.name=name;
-//     user.email=email;
-//     user.password=password;
-//     await user.save();
-//     return user;
 
-// }
 
-// export const deleteUser=async(id)=>{
-//     const user=await User.findById(id);
-//     if(!user)throw new Error("User not Found");
-//     await user.deleteOne();
-   
-// }
+export const getAllUserUrlsDao = async (id) => {
+    return await shortUrl.find({user:id})
+}
 

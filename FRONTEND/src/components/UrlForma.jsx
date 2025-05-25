@@ -5,22 +5,30 @@ import { ClipboardCopy, Loader2, Check } from 'lucide-react';
 import { createShortUrl } from '../api/shortUrl.api.js';
 import { useTheme } from '../context/themeContext.js';
 import { useSelector} from 'react-redux'
+import { QueryClient } from '@tanstack/react-query'
+import { queryClient } from '../main'
 
 function UrlForma() {
     const [originalUrl,setOriginalUrl]=useState("");
     const [shortenUrl,setShortenUrl]=useState("");
     const [isCopied,setIsCopied]=useState(false);
     const { darkMode } = useTheme();
-    
+    const [error, setError] = useState(null)
     const [customSlug,setCustomSlug]=useState("")
     const {isAuthenticated}=useSelector((state)=>state.auth)
 
 
 
-    const HandleSubmit=async function () {
-        const tempUrl=await createShortUrl(originalUrl);
+    const HandleSubmit=async  ()=> {
+        try{
+          const tempUrl=await createShortUrl(originalUrl,customSlug);
 
         setShortenUrl(tempUrl)
+        queryClient.invalidateQueries({queryKey:['userUrls']})
+        setError(null)
+        }catch(err){
+          setError("custom Url already exists")
+        }
     }
    
 
@@ -83,6 +91,11 @@ function UrlForma() {
                     Leave empty for auto-generated short URL
                 </p>
             </div>
+        )}
+        {error && (
+          <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-md">
+            {error}
+          </div>
         )}
 
         {shortenUrl && (

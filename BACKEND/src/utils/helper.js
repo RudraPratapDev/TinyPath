@@ -9,7 +9,7 @@ export const generateNanoId=(length)=>{
 }
 
 export const signToken=(payload)=>{
-    return jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:"20h"})
+    return jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:"2m"})
 }
 
 export const verifyToken=(token)=>{

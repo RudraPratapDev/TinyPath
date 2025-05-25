@@ -7,8 +7,8 @@ import {useNavigate} from '@tanstack/react-router'
 
 
 function LoginForm() {
-  const [email,setEmail]=useState("qwerty@gmail.com");
-  const [password,setPassword]=useState("password");
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
   const [loading,setLoading]=useState(false);
   const [error,setError]=useState('');
   const { darkMode } = useTheme();
