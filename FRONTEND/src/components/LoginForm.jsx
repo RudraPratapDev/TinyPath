@@ -31,7 +31,7 @@ function LoginForm() {
       
     }catch(err){
       setLoading(false);
-      setError(err.message || "Login Failed. Please check your credentials.")
+      setError("Login Failed. Please check your credentials.")
     }
 
 

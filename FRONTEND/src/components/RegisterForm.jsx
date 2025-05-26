@@ -33,7 +33,7 @@ function RegisterForm() {
       
     }catch(err){
       setLoading(false);
-      setError(err.message || "Registeration failed")
+      setError( "Registeration failed")
     }
 
   }
@@ -51,7 +51,6 @@ function RegisterForm() {
           </div>
         )}
 
-        {/* Full Name */}
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2" htmlFor="name">
             Full Name
@@ -68,7 +67,6 @@ function RegisterForm() {
           />
         </div>
 
-        {/* Email */}
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2" htmlFor="email">
             Email
@@ -85,7 +83,6 @@ function RegisterForm() {
           />
         </div>
 
-        {/* Password */}
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2" htmlFor="password">
             Password
@@ -103,7 +100,6 @@ function RegisterForm() {
           />
         </div>
 
-        {/* Button */}
         <div className="flex items-center justify-between">
           <button
             className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -115,7 +111,6 @@ function RegisterForm() {
           </button>
         </div>
 
-        {/* Switch to Login */}
         <div className="text-center mt-4">
           <p className={`cursor-pointer text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             Already have an account?{' '}

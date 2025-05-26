@@ -3,7 +3,7 @@ import { useTheme } from '../context/themeContext';
 import UrlForma from '../components/UrlForma';
 import UserUrl from '../components/UserUrl';
 
-function Dashboard() {
+function UserUrlPage() {
   const { darkMode } = useTheme();
 
   return (
@@ -12,15 +12,11 @@ function Dashboard() {
         darkMode ? "bg-gray-800 text-white" : "bg-gray-50 text-gray-800"
       }`}
     >
-    
-      <div className="w-full max-w-2xl mt-2">
-        <UrlForma darkMode={darkMode} />
+      <div className="w-full max-w-5xl mt-48 mb-8 mx-auto flex  justify-center">
+        <UserUrl />
       </div>
-
-    
-      
     </div>
   );
 }
 
-export default Dashboard;
+export default UserUrlPage;
