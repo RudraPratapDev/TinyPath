@@ -11,7 +11,7 @@ import { errorHandler } from "./src/utils/errorHandler.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { attachUser } from "./src/utils/attachUser.js";
-dotenv.config("./.env")
+dotenv.config()
 
 
 
