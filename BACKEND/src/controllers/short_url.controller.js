@@ -13,7 +13,7 @@ export const createShortUrl = wrapAsync(async (req, res) => {
     shortUrl = await createShortUrlServiceWithoutUser(data.url);
   }
 
-  res.status(200).json({shortUrl:process.env.APP_URL + shortUrl});
+  res.status(200).json({shortUrl: `${process.env.APP_URL}/${shortUrl}`});
 });
 
 
@@ -30,7 +30,7 @@ export const redirectFromShortUrl = wrapAsync(async (req, res) => {
 export const createCustomShortUrl=wrapAsync(async(req,res)=>{
   const {url,slug}=req.body;
   const shortUrl=await createShortUrlServiceWithUser(url,req.user._id,slug);
-res.status(200).json({shortUrl:process.env.APP_URL + shortUrl});
+  res.status(200).json({shortUrl: `${process.env.APP_URL}/${shortUrl}`});
 
 }
 )
