@@ -22,8 +22,8 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors({
-    origin:'http://localhost:5173',
-    credentials:true
+    origin: process.env.FRONTEND_URL,
+    credentials: true
 }))
 
 
@@ -37,7 +37,8 @@ app.use("/:shortUrl",redirectFromShortUrl)
 
 app.use(errorHandler)
 
-app.listen(3000,()=>{
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
     connectDB();
-    console.log("Server running on Port 3000");
+    console.log(`Server running on Port ${PORT}`);
 })

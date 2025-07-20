@@ -26,7 +26,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`${
+      className={`$${
         darkMode
           ? "bg-gray-900/95 text-white border-gray-800"
           : "bg-white/95 text-gray-800 border-gray-200"
@@ -47,7 +47,7 @@ const NavBar = () => {
         <div className="hidden md:flex items-center space-x-8">
           <Link
             to="/"
-            className={`${
+            className={`$${
               darkMode ? "hover:text-blue-400" : "hover:text-blue-600"
             } transition-colors font-medium`}
           >
@@ -56,7 +56,7 @@ const NavBar = () => {
           {isLoggedIn && (
             <Link
               to="/urls"
-              className={`${
+              className={`$${
                 darkMode ? "hover:text-blue-400" : "hover:text-blue-600"
               } transition-colors font-medium`}
             >
@@ -69,7 +69,7 @@ const NavBar = () => {
               <>
                 <Link
                   to="/auth/login"
-                  className={`${
+                  className={`$${
                     darkMode
                       ? "text-gray-200 hover:text-white"
                       : "text-gray-700 hover:text-gray-900"
@@ -87,7 +87,7 @@ const NavBar = () => {
             ) : (
               <div className="flex items-center space-x-4">
                 <span
-                  className={`${
+                  className={`$${
                     darkMode ? "text-gray-300" : "text-gray-600"
                   } font-medium`}
                 >
@@ -95,7 +95,7 @@ const NavBar = () => {
                 </span>
                 <button
                   onClick={handleLogout}
-                  className={`flex items-center space-x-2 ${
+                  className={`flex items-center space-x-2 $${
                     darkMode
                       ? "text-red-400 hover:text-red-300 hover:bg-red-900/20"
                       : "text-red-600 hover:text-red-700 hover:bg-red-50"
@@ -109,7 +109,7 @@ const NavBar = () => {
 
             <button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-lg ${
+              className={`p-2 rounded-lg $${
                 darkMode
                   ? "hover:bg-gray-800 text-yellow-400"
                   : "hover:bg-gray-100 text-gray-600"

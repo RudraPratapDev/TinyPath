@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 import { getAllUserUrls } from '../api/user.api'
 import { useTheme } from '../context/themeContext.js'
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const UserUrl = () => {
   const { darkMode } = useTheme()
 
@@ -78,12 +80,12 @@ const UserUrl = () => {
                 <td className="px-6 py-4">
                   <div className="text-sm">
                     <a 
-                      href={`http://localhost:3000/${url.short_url}`} 
+                      href={`${BASE_URL}/${url.short_url}`} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-blue-400 hover:text-blue-200 hover:underline"
                     >
-                      {`localhost:3000/${url.short_url}`}
+                      {`${BASE_URL.replace(/https?:\/\//, '')}/${url.short_url}`}
                     </a>
                   </div>
                 </td>
@@ -96,7 +98,7 @@ const UserUrl = () => {
                 </td>
                 <td className="px-6 py-4 text-sm font-medium">
                   <button
-                    onClick={() => handleCopy(`http://localhost:3000/${url.short_url}`, url._id)}
+                    onClick={() => handleCopy(`${BASE_URL}/${url.short_url}`, url._id)}
                     className={`inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md shadow-sm ${
                       copiedId === url._id
                         ? 'bg-green-600 text-white hover:bg-green-700'
