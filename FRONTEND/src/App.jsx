@@ -5,7 +5,7 @@ import AuthenticationPage from './pages/AuthenticationPage'
 
 import Homepage from './pages/Homepage.jsx'
 import NavBar from './components/NavBar.jsx'
-import Footer from './components/footer.jsx'
+import Footer from './components/Footer.jsx'
 import { useState } from 'react'
 import { ThemeContext } from './context/themeContext.js'
 
