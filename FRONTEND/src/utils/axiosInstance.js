@@ -1,6 +1,6 @@
 import axios from "axios";
 export const axiosInstance=axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: 'https://tinypath-production.up.railway.app',
     timeout:10000,
     withCredentials:true
 })
