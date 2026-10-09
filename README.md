@@ -51,13 +51,10 @@
 ### 🔥 **Instant URL Shortening**
 - Transform any long URL into a clean, shareable link in seconds
 - Custom short codes for branded links
-- Bulk URL processing capabilities
 
 ### 📈 **Comprehensive Analytics**
 - Real-time click tracking and statistics
-- Geographic data and referrer insights
 - Performance metrics and trends
-- Export data for detailed analysis
 
 ### 👤 **User Management**
 - Secure user authentication with JWT
@@ -119,7 +116,7 @@ Node.js 18+ • MongoDB • Git • npm/yarn
 ```bash
 # Clone the repository
 git clone https://github.com/RudraPratapDev/TinyPath.git
-cd shortURL
+cd TinyPath
 
 # Install backend dependencies
 cd BACKEND && npm install
